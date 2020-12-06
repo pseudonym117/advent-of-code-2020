@@ -13,13 +13,12 @@ fn main() -> Result<(), Box<dyn Error>> {
 
 fn parse_coord_id(input: &str) -> i16 {
     let mut id: i16 = 0;
-    let mut mask: i16 = 0b01000000000;
 
     for i in input.chars().take(10) {
+        id <<= 1;
         if i == 'B' || i == 'R' {
-            id |= mask;
+            id += 1;
         }
-        mask >>= 1;
     }
 
     id
